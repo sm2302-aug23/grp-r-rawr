@@ -18,8 +18,6 @@ max_val_int <- collatz_df %>%
 even_odd_stats <- collatz_df %>%
   mutate(start_type = ifelse(start %% 2 == 0, "even", "odd"))
 
-print(even_odd_stats)
-
 # Calculate average length and standard deviation for even and odd starting integers
 even_odd_stats_summary <- even_odd_stats %>%
   group_by(start_type = "even") %>%
