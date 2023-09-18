@@ -16,7 +16,8 @@ max_val_int <- collatz_df %>%
 
 even_odd_avg_len <- collatz_df %>%
   group_by(parity) %>%
-  summarize(avg_length = mean(length), sd_length = sd(length))
+  summarize(avg_length = mean(length, na.rm = TRUE), sd_length = sd(length, na.rm = TRUE))
+
 
 
 saveRDS(top10longest, file = "top10longest.rds")
