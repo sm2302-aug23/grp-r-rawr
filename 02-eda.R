@@ -7,6 +7,7 @@ collatz_df <- collatz_df %>%
 top10longest <- collatz_df %>%
   arrange(desc(length)) %>%
   top_n(10, seq_length)
+t(top10longest)
 
 #2. Find out which starting integer produces a sequence that reaches the highest maximum value [max_val_int]
 
