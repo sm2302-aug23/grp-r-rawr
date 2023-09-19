@@ -5,22 +5,28 @@ collatz_df <- collatz_df %>%
 
 #1. Find the top 10 starting integers that produce the longest sequences [top10longest]
 top10longest <- collatz_df %>%
-  arrange(desc(length)) %>%
-  top_n(10, seq_length)
-t(top10longest)
+  mutate(seq_length = lengths(seq)) %>%
+  arrange(desc(seq_length)) %>%
+  head(10)
+
 
 #2. Find out which starting integer produces a sequence that reaches the highest maximum value [max_val_int]
 
 max_val_int <- collatz_df %>%
+  mutate(max_val = sapply(seq, max)) %>%
   filter(max_val == max(max_val)) %>%
-  select(start, max_val)
+  select(start)
 
 
 #3. What is the average length and standard deviation of the sequence for even starting integers compared to odd ones? [even_odd_avg_len and even_odd_sd_len]
 
-even_odd_avg_len <- collatz_df %>%
-  group_by(parity) %>%
-  summarize(avg_length = mean(length, na.rm = TRUE), sd_length = sd(length, na.rm = TRUE))
+even_odd_summary <- collatz_df %>%
+  mutate(is_even = start %% 2 == 0) %>%
+  group_by(is_even) %>%
+  summarize(
+    avg_length = mean(seq_length),
+    sd_length = sd(seq_length)
+  )
 
 
 
