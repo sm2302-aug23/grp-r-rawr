@@ -20,7 +20,7 @@ max_val_int <- collatz_df %>%
 
 #3. What is the average length and standard deviation of the sequence for even starting integers compared to odd ones? [even_odd_avg_len and even_odd_sd_len]
 
-even_odd_summary <- collatz_df %>%
+even_odd_avg_len <- collatz_df %>%
   mutate(is_even = start %% 2 == 0) %>%
   group_by(is_even) %>%
   summarize(
