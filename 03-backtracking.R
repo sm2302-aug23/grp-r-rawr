@@ -21,4 +21,8 @@ even_odd_backtrack <- backtracks_df %>%
     Odd = n() - sum(start %% 2 == 0)
   )
 
+mode_backtrack$mode_backtrack
+max_after_backtrack$max_after_backtrack
+even_odd_backtrack$Even
+even_odd_backtrack$Odd
 
