@@ -21,8 +21,8 @@ collatz_df <- collatz_df %>%
 max_val_int <- collatz_df %>%
   arrange(desc(max_val)) %>%
   head(10) %>%
-  pull(start) %>%
-  set_names(NULL)
+  select(start) %>%
+  pivot_wider(names_from = start, values_from = start)
 
 saveRDS(max_val_int, file = "max_val_int.rds")
 
