@@ -11,7 +11,7 @@ top10longest <- collatz_df %>%
 #2. Find out which starting integer produces a sequence that reaches the highest maximum value [max_val_int]
 max_val_int <- collatz_df %>%
   mutate(max_val = sapply(seq, max)) %>%
-  filter(max_val == max(max_val)) %>%
+  filter(max_val == max(max_val)) 
 
 #3. What is the average length and standard deviation of the sequence for even starting integers compared to odd ones? [even_odd_avg_len and even_odd_sd_len]
 even_odd_stats <- collatz_df %>%
