@@ -24,11 +24,9 @@ even_odd_summary <- collatz_df %>%
   mutate(is_even = start %% 2 == 0) %>%
   group_by(is_even) %>%
   summarize(
-    even_odd_avg_length = mean(seq_length),
-    even_odd_sd_length = sd(seq_length)
+    even_odd_avg_len = mean(seq_length),
+    even_odd_sd_len = sd(seq_length)
   )
-
-
 
 saveRDS(top10longest, file = "top10longest.rds")
 saveRDS(max_val_int, file = "max_val_int.rds")
