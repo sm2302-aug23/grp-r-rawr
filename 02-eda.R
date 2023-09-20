@@ -78,9 +78,3 @@ even_odd_summary <- collatz_df %>%
   )
 
 saveRDS(even_odd_summary, file = "even_odd_summary.rds")
-
-
-saveRDS(even_odd_summary, file = "even_odd_summary.rds")
-
-
-saveRDS(even_odd_summary, file = "even_odd_summary.rds")
