@@ -54,10 +54,10 @@ collatz_df <- collatz_df %>%
   mutate(max_val = sapply(seq, max))
 
 max_val_int <- collatz_df %>%
-  arrange(desc(max_val)) # %>%
-  # head(10) %>%
-  # select(start) %>%
-  # pivot_wider(names_from = start, values_from = start)
+  arrange(desc(max_val)) %>%
+  head(1) %>%
+  select(start) %>%
+  pivot_wider(names_from = start, values_from = start)
 
 saveRDS(max_val_int, file = "max_val_int.rds")
 
@@ -69,7 +69,7 @@ even_odd_avg_len <- collatz_df %>%
 even_odd_sd_len <- collatz_df %>%
   group_by(parity) %>%
   summarize(even_odd_sd_len = sd(length))
-
+ 
 even_odd_summary <- collatz_df %>%
   group_by(parity) %>%
   summarize(
