@@ -24,11 +24,6 @@ max_val_int <- collatz_df %>%
   select(start) %>%
   pivot_wider(names_from = start, values_from = start)
 
-max_val_int <- collatz_df %>%
-  group_by(start) %>%
-  summarise(max_val = max(start)) %>%
-  top_n(1, wt = max_val)
-
 saveRDS(max_val_int, file = "max_val_int.rds")
 
 #3. What is the average length and standard deviation of the sequence for even starting integers compared to odd ones? [even_odd_avg_len and even_odd_sd_len]
