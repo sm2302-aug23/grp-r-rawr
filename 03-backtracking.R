@@ -21,10 +21,4 @@ even_odd_backtrack <- backtracks_df %>%
     Odd = n() - sum(start %% 2 == 0)
   )
 
-print("Most frequently occurring backtrack count:")
-print(mode_backtrack$mode_backtrack)
-print("Maximum value after the first backtrack:")
-print(max_after_backtrack$max_after_backtrack)
-print("Frequency of backtracking among even and odd starting integers:")
-print("Even:", even_odd_backtrack$Even)
-print("Odd:", even_odd_backtrack$Odd)
+
