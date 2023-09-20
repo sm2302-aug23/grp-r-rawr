@@ -1,12 +1,12 @@
 library(tidyverse)
 
 #1: Filter for backtracking sequences
+contain_backtracking <- function(seq, start) {
+  any(seq < start) && any(seq > start)
+}
+
 backtracks_df <- collatz_df %>%
-  filter(
-    seq_along(seq) > 2,  
-    any(seq < start),   
-    any(seq > start)    
-  )
+  filter(map2_lgl(seq, start, ~ contain_backtracking(.x, .y)))
 
 #2: Find the mode backtrack (most frequent occuring number of )
 backtrack_counts <- backtracks_df %>%
