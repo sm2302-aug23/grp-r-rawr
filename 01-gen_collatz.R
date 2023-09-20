@@ -1,11 +1,10 @@
 library(tidyverse)
 
 gen_collatz <- function(n) {
-  sequence <- c() #create an empty vector
+  sequence <- c() 
   
-  if (n <= 0 || !is.integer(n)) {
-    warning("Input must be a positive integer.") #safeguard to handle invalid n
-    return(NULL)
+  if (!is.integer(n) || n <= 0) {
+    stop("Input must be a positive integer.") 
   }
   
   #generate the sequence
@@ -18,10 +17,11 @@ gen_collatz <- function(n) {
     }
   }
   
-  sequence <- c(sequence, 1) #because collatz_df always ends with 1
+  sequence <- c(sequence, 1) 
   
   return(sequence)
 }
+
 
 #tibble for the function application
 collatz_df <- tibble(
