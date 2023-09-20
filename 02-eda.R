@@ -19,8 +19,10 @@ collatz_df <- collatz_df %>%
   mutate(max_val = sapply(seq, max))
 
 max_val_int <- collatz_df %>%
-  filter(max_val == max(collatz_df$max_val)) %>%
-  select(start)
+  arrange(desc(max_val)) %>%
+  head(10) %>%
+  pull(start) %>%
+  set_names(NULL)
 
 saveRDS(max_val_int, file = "max_val_int.rds")
 
