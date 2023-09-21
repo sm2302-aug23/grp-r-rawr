@@ -9,8 +9,7 @@ top10longest <- collatz_df %>%
   head(10)
 
 top10longest <- top10longest %>%
-  select(start) %>%
-  pivot_wider(names_from = start, values_from = start)
+  select(start)
 
 top10longest <- unlist(top10longest)
 
