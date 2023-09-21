@@ -1,16 +1,29 @@
-library(tidyverse)
 
 #1. Find the top 10 starting integers that produce the longest sequences [top10longest]
-collatz_df <- collatz_df %>%
-  mutate(seq_length = sapply(seq, length))
+collatz_seq <- function(n) {
+  seq <- c(n)
+  while (n != 1) {
+    if (n %% 2 == 0) {
+      n <- n / 2
+    } else {
+      n <- 3*n + 1
+    }
+    seq <- c(seq, n)
+  }
+  return(seq)
+}
+
+start_int <- 1:100
+sequences <- lapply(start_int, collatz_seq)
+
+library(tidyverse)
+
+collatz_df <- tibble(start_int = start_int, seq = sequences)
 
 top10longest <- collatz_df %>%
+  mutate(seq_length = map_int(seq, length)) %%
   arrange(desc(seq_length)) %>%
   head(10)
-
-top10longest <- top10longest %>%
-  select(start) %>%
-  pivot_wider(names_from = start, values_from = start)
 
 saveRDS(top10longest, file = "top10longest.rds")
 
