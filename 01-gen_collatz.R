@@ -1,13 +1,12 @@
 library(tidyverse)
 
 gen_collatz <- function(n) {
-  sequence <- c() 
-  
   if (!is.integer(n) || n <= 0) {
     stop("Input must be a positive integer.") 
   }
   
   #generate the sequence
+  sequence <- numeric(0)
   while (n != 1) { 
     sequence <- c(sequence, n)
     if (n %% 2 == 0) {
