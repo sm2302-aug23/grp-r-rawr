@@ -15,7 +15,7 @@ has_backtracking <- function(seq) {
 }
 
 backtracks_df <- collatz_df %>%
-  filter(sapply(seq, has_backtracking))
+  filter(sapply(seq, function(x) any(x > x[1])))
 
 #2: Find the mode backtrack
 mode_backtrack <- backtracks_df %>%
