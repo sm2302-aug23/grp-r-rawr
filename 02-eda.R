@@ -33,6 +33,7 @@ even_odd_avg_len <- collatz_df %>%
   unlist()
 
 even_odd_avg_len <- even_odd_avg_len[2] / even_odd_avg_len[1]
+even_odd_avg_len <- round(even_odd_avg_len, 6)
 
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
@@ -44,6 +45,10 @@ even_odd_sd_len <- collatz_df %>%
   unlist()
 
 even_odd_sd_len <- even_odd_sd_len[2] / even_odd_sd_len[1]
+even_odd_sd_len <- round(even_odd_sd_len, 6)
+
+
+saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
 
 
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
