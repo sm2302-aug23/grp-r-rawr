@@ -28,14 +28,14 @@ saveRDS(max_val_int, file = "max_val_int.rds")
 
 #3. What is the average length and standard deviation of the sequence for even starting integers compared to odd ones? [even_odd_avg_len and even_odd_sd_len]
 even_odd_avg_len <- collatz_df %>%
-  mutate(length = as.numeric(length)) %>%
+  mutate(seq_length = as.numeric(seq_length)) %>%
   group_by(parity) %>%
-  summarize(even_odd_avg_len = mean(length))
+  summarize(even_odd_avg_len = mean(seq_length, na.rm = TRUE))
 
 even_odd_sd_len <- collatz_df %>%
-  mutate(length = as.numeric(length)) %>%
+  mutate(seq_length = as.numeric(seq_length)) %>%
   group_by(parity) %>%
-  summarize(even_odd_sd_len = sd(length))
+  summarize(even_odd_sd_len = sd(seq_length, na.rm = TRUE))
 
 even_odd_summary <- collatz_df %>%
   group_by(parity) %>%
@@ -45,4 +45,6 @@ even_odd_summary <- collatz_df %>%
   )
 
 saveRDS(even_odd_summary, file = "even_odd_summary.rds")
+
+combined_df <- bind_cols(max_val_int, top10longest)
 
