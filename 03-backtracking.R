@@ -15,7 +15,8 @@ max_after_backtrack <- backtracks_df %>%
   rowwise() %>%
   mutate(first_backtrack_index = which(seq < start)[1],
          max_after_backtrack = max(seq[(first_backtrack_index + 1):length(seq)])) %>%
-  select(max_after_backtrack)
+  select(max_after_backtrack) %>%
+  unlist()
 
 #4: Calculate the frequency counts for even and odd backtracking integers
 even_odd_backtrack <- backtracks_df %>%
