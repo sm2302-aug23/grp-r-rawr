@@ -6,24 +6,22 @@ collatz_df <- collatz_df %>%
 
 top10longest <- collatz_df %>%
   arrange(desc(seq_length)) %>%
-  head(10)
-
-top10longest <- top10longest %>%
-  select(start)
-
-top10longest <- unlist(top10longest)
+  head(10) %>%
+  select(start) %>%
+  unlist()
 
 saveRDS(top10longest, file = "top10longest.rds")
+
 
 #2. Find out which starting integer produces a sequence that reaches the highest maximum value [max_val_int]
 collatz_df <- collatz_df %>%
   mutate(max_val = sapply(seq, max))
 
 max_val_int <- collatz_df %>%
-  arrange(desc(max_val)) %>%
-  head(1) %>%
+  filter(max_val == max(max_val)) %>%
   select(start) %>%
-  pivot_wider(names_from = start, values_from = start)
+  pivot_wider(names_from = start, values_from = start) %>%
+  unlist()
 
 saveRDS(max_val_int, file = "max_val_int.rds")
 
