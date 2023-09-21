@@ -32,6 +32,8 @@ even_odd_avg_len <- collatz_df %>%
   select(even_odd_avg_len) %>%
   unlist()
 
+even_odd_avg_len <- even_odd_avg_len[2] / even_odd_avg_len[1]
+
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
 even_odd_sd_len <- collatz_df %>%
@@ -40,5 +42,8 @@ even_odd_sd_len <- collatz_df %>%
   summarize(even_odd_sd_len = sd(seq_length)) %>%
   select(even_odd_sd_len) %>%
   unlist()
+
+even_odd_sd_len <- even_odd_sd_len[2] / even_odd_sd_len[1]
+
 
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
