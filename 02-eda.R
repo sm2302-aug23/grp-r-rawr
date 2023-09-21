@@ -45,6 +45,3 @@ even_odd_summary <- collatz_df %>%
 
 saveRDS(even_odd_summary, file = "even_odd_summary.rds")
 
-combined_df <- bind_cols(max_val_int, top10longest)
-
-str(collatz_df)
