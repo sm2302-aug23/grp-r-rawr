@@ -25,26 +25,6 @@ max_val_int <- collatz_df %>%
 
 saveRDS(max_val_int, file = "max_val_int.rds")
 
-#2. Find out which starting integer produces a sequence that reaches the highest maximum value [max_val_int]
-even_odd_avg_len <- collatz_df %>%
-  mutate(seq_length = as.numeric(seq_length)) %>%
-  group_by(parity) %>%
-  summarize(even_odd_avg_len = mean(seq_length, na.rm = TRUE))
-
-even_odd_sd_len <- collatz_df %>%
-  mutate(seq_length = as.numeric(seq_length)) %>%
-  group_by(parity) %>%
-  summarize(even_odd_sd_len = sd(seq_length, na.rm = TRUE))
-
-even_odd_summary <- collatz_df %>%
-  group_by(parity) %>%
-  summarize(
-    even_odd_avg_len = mean(seq_length),
-    even_odd_sd_len = sd(seq_length)
-  )
-
-saveRDS(even_odd_summary, file = "even_odd_summary.rds")
-
 #3. What is the average length and standard deviation of the sequence for even starting integers compared to odd ones? [even_odd_avg_len and even_odd_sd_len]
 even_odd_avg_len <- collatz_df %>%
   mutate(seq_length = as.numeric(seq_length)) %>%
