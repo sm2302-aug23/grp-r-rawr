@@ -27,3 +27,5 @@ even_odd_backtrack <- backtracks_df %>%
 
 even_odd_backtrack$Even
 even_odd_backtrack$Odd
+
+

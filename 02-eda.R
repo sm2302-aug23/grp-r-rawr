@@ -1,7 +1,5 @@
 library(tidyverse)
 
-library(tidyverse)
-
 #1. Find the top 10 starting integers that produce the longest sequences [top10longest]
 collatz_df <- collatz_df %>%
   mutate(seq_length = sapply(seq, length))
@@ -27,7 +25,6 @@ max_val_int <- collatz_df %>%
   pivot_wider(names_from = start, values_from = start)
 
 saveRDS(max_val_int, file = "max_val_int.rds")
-
 
 #3. What is the average length and standard deviation of the sequence for even starting integers compared to odd ones? [even_odd_avg_len and even_odd_sd_len]
 even_odd_avg_len <- collatz_df %>%
