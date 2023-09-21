@@ -41,10 +41,14 @@ even_odd_sd_len <- collatz_df %>%
   unlist()
 
 even_odd_summary <- collatz_df %>%
+  mutate(seq_length = as.numeric(seq_length)) %>%
   group_by(parity) %>%
   summarize(
-    even_odd_avg_len = mean(seq_length),
-    even_odd_sd_len = sd(seq_length)
+    even_odd_avg_len = mean(seq_length, na.rm = TRUE),
+    even_odd_sd_len = sd(seq_length, na.rm = TRUE)
   )
+
+
+saveRDS(even_odd_summary, file = "even_odd_summary.rds")
 
 saveRDS(even_odd_summary, file = "even_odd_summary.rds")
