@@ -1,8 +1,21 @@
 library(tidyverse)
 
-#1: Filter for backtracking sequences
+#1: Check if a sequence shows backtracking and apply function
+
+has_backtracking <- function(seq) {
+  decreasing <- FALSE
+  for (i in 2:length(seq)) {
+    if (seq[i] < seq[i-1]) {
+      decreasing <- TRUE
+    } else if (decreasing && seq[i] > seq[i-1]) {
+      return(TRUE)
+    }
+  }
+  return(FALSE)
+}
+
 backtracks_df <- collatz_df %>%
-  filter(sapply(seq, function(x) any(x > x[1])))
+  filter(sapply(seq, has_backtracking))
 
 #2: Find the mode backtrack
 mode_backtrack <- backtracks_df %>%
