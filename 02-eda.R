@@ -35,7 +35,7 @@ odd_avg_len <- collatz_df %>%
 
 even_odd_avg_len <- even_avg_len$even_avg_len / odd_avg_len$odd_avg_len
 
-if (!is.na(ratio_avg_len) && abs(ratio_avg_len - 1.160139) > 1e-6) {
+if (!is.na(even_odd_avg_len) && abs(even_odd_avg_len - 1.160139) > 1e-6) {
   stop("Error: Ratio of even_avg_len to odd_avg_len does not match the expected value.")
 }
 
@@ -53,7 +53,7 @@ odd_sd_len <- collatz_df %>%
 even_odd_sd_len <- even_sd_len$even_sd_len / odd_sd_len$odd_sd_len
 
 
-if (!is.na(ratio_sd_len) && abs(ratio_sd_len - 1.046134) > 1e-6) {
+if (!is.na(even_odd_sd_len) && abs(even_odd_sd_len - 1.046134) > 1e-6) {
   stop("Ratio of even_sd_len to odd_sd_len does not match the expected value.")
 }
 
