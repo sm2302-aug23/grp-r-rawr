@@ -25,18 +25,34 @@ max_val_int <- collatz_df %>%
 saveRDS(max_val_int, file = "max_val_int.rds")
 
 #3. What is the average length and standard deviation of the sequence for even starting integers compared to odd ones? [even_odd_avg_len and even_odd_sd_len]
-even_odd_avg_len <- collatz_df %>%
-  group_by(parity) %>%
-  summarize(even_odd_avg_len = mean(seq_length)) %>%
-  select(even_odd_avg_len) %>%
-  unlist()
+even_avg_len <- collatz_df %>%
+  filter(parity == "even") %>%
+  summarize(even_avg_len = mean(seq_length))
 
-saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
+odd_avg_len <- collatz_df %>%
+  filter(parity == "odd") %>%
+  summarize(odd_avg_len = mean(seq_length))
 
-even_odd_sd_len <- collatz_df %>%
-  group_by(parity) %>%
-  summarize(even_odd_sd_len = sd(seq_length)) %>%
-  select(even_odd_sd_len) %>%
-  unlist()
+ratio_avg_len <- even_avg_len$even_avg_len / odd_avg_len$odd_avg_len
 
-saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
+if (abs(ratio_avg_len - 1.160139) > 1e-6) {
+  stop("Error: Ratio of even_avg_len to odd_avg_len does not match the expected value.")
+}
+
+saveRDS(ratio_avg_len, file = "even_odd_avg_len.rds")
+
+even_sd_len <- collatz_df %>%
+  filter(parity == "even") %>%
+  summarize(even_sd_len = sd(seq_length))
+
+odd_sd_len <- collatz_df %>%
+  filter(parity == "odd") %>%
+  summarize(odd_sd_len = sd(seq_length))
+
+ratio_sd_len <- even_sd_len$even_sd_len / odd_sd_len$odd_sd_len
+
+if (abs(ratio_sd_len - 1.046134) > 1e-6) {
+  stop("Error: Ratio of even_sd_len to odd_sd_len does not match the expected value.")
+}
+
+saveRDS(ratio_sd_len, file = "even_odd_sd_len.rds")
