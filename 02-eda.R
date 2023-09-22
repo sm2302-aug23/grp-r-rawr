@@ -1,4 +1,6 @@
 library(tidyverse)
+install.packages("testthat")
+library(testthat)
 
 #1. Find the top 10 starting integers that produce the longest sequences [top10longest]
 collatz_df <- collatz_df %>%
@@ -31,9 +33,7 @@ even_odd_avg_len <- collatz_df %>%
 
 expected_avg_len <- c(1.160139, 1)
 
-if (all(abs(even_odd_avg_len$even_avg_len - expected_avg_len) < 1e-6)) {
-  print("Ratios of even_avg_len to odd_avg_len do not match the expected values.")
-}
+expect_equal(even_odd_avg_len$even_avg_len, expected_avg_len, tolerance = 1e-6)
 
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
@@ -45,8 +45,6 @@ even_odd_sd_len <- collatz_df %>%
 
 expected_sd_len <- c(1.046134, 1)
 
-if (all(abs(even_odd_sd_len$even_sd_len - expected_sd_len) < 1e-6)) {
-  print("Ratios of even_avg_len to odd_avg_len do not match the expected values.")
-}
+expect_equal(even_odd_sd_len$even_sd_len, expected_sd_len, tolerance = 1e-6)
 
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
