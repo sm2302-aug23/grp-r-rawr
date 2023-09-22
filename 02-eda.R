@@ -26,14 +26,27 @@ saveRDS(max_val_int, file = "max_val_int.rds")
 
 even_odd_avg_len <- collatz_df %>%
   group_by(parity) %>%
-  summarize(even_avg_len = mean(seq_length, na.rm = TRUE)) %>%
+  summarize(even_avg_len = mean(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
+
+expected_avg_len <- c(1.160139, 1)
+
+if (all(abs(even_odd_avg_len$even_avg_len - expected_avg_len) < 1e-6)) {
+  print("Ratios of even_avg_len to odd_avg_len do not match the expected values.")
+}
 
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
+
 even_odd_sd_len <- collatz_df %>%
   group_by(parity) %>%
-  summarize(even_sd_len = sd(seq_length, na.rm = TRUE)) %>%
+  summarize(even_sd_len = sd(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
+
+expected_sd_len <- c(1.046134, 1)
+
+if (all(abs(even_odd_sd_len$even_sd_len - expected_sd_len) < 1e-6)) {
+  print("Ratios of even_avg_len to odd_avg_len do not match the expected values.")
+}
 
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
