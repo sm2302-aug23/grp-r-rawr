@@ -35,8 +35,10 @@ odd_avg_len <- collatz_df %>%
 
 even_odd_avg_len <- c(even_avg_len$even_avg_len, odd_avg_len$odd_avg_len)
 
-if (!is.na(even_odd_avg_len) && abs(even_odd_avg_len - 1.160139) > 1e-6) {
-  stop("Ratio of even_avg_len to odd_avg_len does not match the expected value.")
+expected_avg_len <- c(1.160139, 1)  # The expected values
+
+if (!all(is.na(even_odd_avg_len)) && all(abs(even_odd_avg_len - expected_avg_len) < 1e-6)) {
+  stop("Ratios of even_avg_len to odd_avg_len do not match the expected values.")
 }
 
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
@@ -51,8 +53,10 @@ odd_sd_len <- collatz_df %>%
 
 even_odd_sd_len <- c(even_sd_len$even_sd_len, odd_sd_len$odd_sd_len)
 
-if (!is.na(even_odd_sd_len) && abs(even_odd_sd_len - 1.046134) > 1e-6) {
-  stop("Ratio of even_sd_len to odd_sd_len does not match the expected value.")
+expected_sd_len <- c(1.160139, 1)  # The expected values
+
+if (!all(is.na(even_odd_sd_len)) && all(abs(even_odd_sd_len - expected_sd_len) < 1e-6)) {
+  stop("Error: Ratios of even_avg_len to odd_avg_len do not match the expected values.")
 }
 
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
