@@ -36,10 +36,11 @@ odd_avg_len <- collatz_df %>%
 ratio_avg_len <- even_avg_len$even_avg_len / odd_avg_len$odd_avg_len
 
 if (!is.na(ratio_avg_len) && abs(ratio_avg_len - 1.160139) > 1e-6) {
-  stop("Ratio of average length of even sequences to average length of odd sequences does not match the expected value.")
+  stop("Error: Ratio of even_avg_len to odd_avg_len does not match the expected value.")
 }
 
 saveRDS(ratio_avg_len, file = "even_odd_avg_len.rds")
+
 
 even_sd_len <- collatz_df %>%
   filter(parity == "even") %>%
@@ -53,7 +54,7 @@ ratio_sd_len <- even_sd_len$even_sd_len / odd_sd_len$odd_sd_len
 
 
 if (!is.na(ratio_sd_len) && abs(ratio_sd_len - 1.046134) > 1e-6) {
-  stop("Ratio of standard deviation of even sequences to standard deviatio of odd sequences does not match the expected value.")
+  stop("Ratio of even_sd_len to odd_sd_len does not match the expected value.")
 }
 
 saveRDS(ratio_sd_len, file = "even_odd_sd_len.rds")
