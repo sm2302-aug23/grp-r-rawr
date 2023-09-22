@@ -27,11 +27,11 @@ saveRDS(max_val_int, file = "max_val_int.rds")
 #3. What is the average length and standard deviation of the sequence for even starting integers compared to odd ones? [even_odd_avg_len and even_odd_sd_len]
 even_avg_len <- collatz_df %>%
   filter(parity == "even") %>%
-  summarize(even_avg_len = mean(seq_length))
+  summarize(even_avg_len = mean(seq_length, na.rm = TRUE))
 
 odd_avg_len <- collatz_df %>%
   filter(parity == "odd") %>%
-  summarize(odd_avg_len = mean(seq_length))
+  summarize(odd_avg_len = mean(seq_length, na.rm = TRUE))
 
 if (is.na(even_avg_len$even_avg_len) || is.na(odd_avg_len$odd_avg_len)) {
   stop("Cannot calculate the ratio due to missing values.")
@@ -47,11 +47,11 @@ saveRDS(ratio_avg_len, file = "even_odd_avg_len.rds")
 
 even_sd_len <- collatz_df %>%
   filter(parity == "even") %>%
-  summarize(even_sd_len = sd(seq_length))
+  summarize(even_sd_len = sd(seq_length, na.rm = TRUE))
 
 odd_sd_len <- collatz_df %>%
   filter(parity == "odd") %>%
-  summarize(odd_sd_len = sd(seq_length))
+  summarize(odd_sd_len = sd(seq_length, na.rm = TRUE))
 
 if (is.na(even_sd_len$even_sd_len) || is.na(odd_sd_len$odd_sd_len)) {
   stop("Cannot calculate the ratio due to missing values.")
