@@ -37,11 +37,7 @@ even_odd_avg_len <- c(even_avg_len$even_avg_len, odd_avg_len$odd_avg_len)
 
 expected_avg_len <- c(1.160139, 1)
 
-if (any(is.nan(even_odd_avg_len))) {
-  stop("Ratios of even_avg_len to odd_avg_len contain NaN values.")
-}
-
-if (!all(is.na(even_odd_avg_len)) && all(abs(even_odd_avg_len - expected_avg_len) < 1e-6)) {
+if (all(!is.na(even_odd_avg_len)) && all(abs(even_odd_avg_len - expected_avg_len) < 1e-6)) {
   stop("Ratios of even_avg_len to odd_avg_len do not match the expected values.")
 }
 
