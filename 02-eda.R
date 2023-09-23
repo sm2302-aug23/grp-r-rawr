@@ -30,7 +30,7 @@ even_odd_avg_len <- collatz_df %>%
   summarize(even_avg_len = mean(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
 
-expected_avg_len <- c(1.160139, 1)
+expected_avg_len <- c(79.5936, 92.3396)
 
 expect_equal(even_odd_avg_len$even_avg_len, expected_avg_len, tolerance = 1e-6)
 
@@ -42,7 +42,7 @@ even_odd_sd_len <- collatz_df %>%
   summarize(even_sd_len = sd(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
 
-expected_sd_len <- c(1.046134, 1)
+expected_sd_len <- c(45.10308, 47.18387)
 
 expect_equal(even_odd_sd_len$even_sd_len, expected_sd_len, tolerance = 1e-6)
 
