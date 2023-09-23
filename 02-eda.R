@@ -1,5 +1,4 @@
 library(tidyverse)
-install.packages("testthat")
 library(testthat)
 
 #1. Find the top 10 starting integers that produce the longest sequences [top10longest]
