@@ -53,11 +53,17 @@ odd_sd_len <- c(47.18387)
 
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
 
+if(length(even_avg_len) > 1 && length(odd_avg_len) > 1) {
+ 
 # Perform a t-test for average length
-t_test_length <- t.test(even_avg_len, odd_avg_len)
+  t_test_length <- t.test(even_avg_len, odd_avg_len)
 
 # Perform a t-test for standard deviation
-t_test_sd <- t.test(even_sd_len, odd_sd_len)
+  t_test_sd <- t.test(even_sd_len, odd_sd_len)
+
+  } else {
+  print("Not enough observations for t-tests")
+}
 
 # Print out the results
 t_test_length
