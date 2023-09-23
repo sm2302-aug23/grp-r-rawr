@@ -30,6 +30,8 @@ even_odd_avg_len <- collatz_df %>%
   summarize(even_avg_len = mean(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
 
+str(even_odd_avg_len)
+
 #  parity even_avg_len
 #1   Even      79.5936
 #2    Odd      92.3396
@@ -43,6 +45,8 @@ even_odd_sd_len <- collatz_df %>%
   group_by(parity) %>%
   summarize(even_sd_len = sd(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
+
+str(even_odd_sd_len)
 
 #  parity even_sd_len
 #1   Even    45.10308
