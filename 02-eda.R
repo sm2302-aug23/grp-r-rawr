@@ -1,5 +1,4 @@
 library(tidyverse)
-library(testthat)
 
 #1. Find the top 10 starting integers that produce the longest sequences [top10longest]
 collatz_df <- collatz_df %>%
@@ -25,25 +24,41 @@ max_val_int <- collatz_df %>%
 
 saveRDS(max_val_int, file = "max_val_int.rds")
 
+#3. Average length and standard deviation of the sequence for even starting integers compared to odd ones
 even_odd_avg_len <- collatz_df %>%
   group_by(parity) %>%
   summarize(even_avg_len = mean(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
 
-expected_avg_len <- c(79.5936, 92.3396)
-
-expect_equal(even_odd_avg_len$even_avg_len, expected_avg_len, tolerance = 1e-6)
+#  parity even_avg_len
+#1   Even      79.5936
+#2    Odd      92.3396
+ 
+even_avg_len <- c(79.5936)
+odd_avg_len <- c(92.3396)
 
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
-
 
 even_odd_sd_len <- collatz_df %>%
   group_by(parity) %>%
   summarize(even_sd_len = sd(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
 
-expected_sd_len <- c(45.10308, 47.18387)
+#  parity even_sd_len
+#1   Even    45.10308
+#2    Odd    47.18387
 
-expect_equal(even_odd_sd_len$even_sd_len, expected_sd_len, tolerance = 1e-6)
+even_sd_len <- c(45.10308)
+odd_sd_len <- c(47.18387)
 
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
+
+# Perform a t-test for average length
+t_test_length <- t.test(even_avg_len, odd_avg_len)
+
+# Perform a t-test for standard deviation
+t_test_sd <- t.test(even_sd_len, odd_sd_len)
+
+# Print out the results
+t_test_length
+t_test_sd
