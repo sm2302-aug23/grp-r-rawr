@@ -30,12 +30,18 @@ even_odd_avg_len <- collatz_df %>%
   summarize(avg_len = mean(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
 
+expected_avg_len <- c(79.5936, 92.3396)
+expect_equal(even_odd_avg_len$avg_len, expected_avg_len, tolerance = 1e-6)
+
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
 even_odd_sd_len <- collatz_df %>%
   group_by(parity) %>%
   summarize(sd_len = sd(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame()
+
+expected_sd_len <- c(45.10308, 47.18387)
+expect_equal(even_odd_sd_len$sd_len, expected_sd_len, tolerance = 1e-6)
 
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
 
