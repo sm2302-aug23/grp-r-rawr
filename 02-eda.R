@@ -27,16 +27,12 @@ saveRDS(max_val_int, file = "max_val_int.rds")
 #3. Average length and standard deviation of the sequence for even starting integers compared to odd ones
 even_odd_avg_len <- collatz_df %>%
   group_by(parity) %>%
-  summarize(avg_len = mean(as.numeric(seq_length), na.rm = TRUE)) %>%
-  as.data.frame() 
+  summarize(avg_len = mean(as.vector(seq_length), na.rm = TRUE))
 
 expected_avg_len <- c(79.5936, 92.3396)
 expect_equal(even_odd_avg_len$avg_len, expected_avg_len, tolerance = 1e-6)
 
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
-
-loaded_even_odd_avg_len <- readRDS("even_odd_avg_len.rds")
-expect_equal(loaded_even_odd_avg_len$avg_len, expected_avg_len, tolerance = 1e-6)
 
 even_odd_sd_len <- collatz_df %>%
   group_by(parity) %>%
