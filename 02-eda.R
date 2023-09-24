@@ -35,6 +35,9 @@ expect_equal(even_odd_avg_len$avg_len, expected_avg_len, tolerance = 1e-6)
 
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
+loaded_even_odd_avg_len <- readRDS("even_odd_avg_len.rds")
+expect_equal(loaded_even_odd_avg_len$avg_len, expected_avg_len, tolerance = 1e-6)
+
 even_odd_sd_len <- collatz_df %>%
   group_by(parity) %>%
   summarize(sd_len = sd(as.numeric(seq_length), na.rm = TRUE)) %>%
