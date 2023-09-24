@@ -30,6 +30,7 @@ even_odd_avg_len <- collatz_df %>%
   summarize(avg_len = mean(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
 
+even_odd_avg_len$even_sd_len <- lapply(even_odd_avg_len$avg_len, as.numeric)
 expected_avg_len <- c(1.160139, 1)
 
 if (all(abs(as.numeric(even_odd_avg_len$avg_len) - expected_avg_len) < 1e-6)) {
@@ -40,12 +41,13 @@ saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
 even_odd_sd_len <- collatz_df %>%
   group_by(parity) %>%
-  summarize(even_sd_len = sd(as.numeric(seq_length), na.rm = TRUE)) %>%
-  as.data.frame() 
+  summarize(sd_len = sd(as.numeric(seq_length), na.rm = TRUE)) %>%
+  as.data.frame()
 
+even_odd_sd_len$even_sd_len <- lapply(even_odd_sd_len$sd_len, as.numeric)
 expected_sd_len <- c(1.046134, 1)
 
-if (all(abs(as.numeric(even_odd_sd_len$even_sd_len) - expected_sd_len) < 1e-6)) {
+if (all(abs(as.numeric(even_odd_sd_len$sd_len) - expected_sd_len) < 1e-6)) {
   print("Ratios of even_avg_len to odd_avg_len do not match the expected values.")
 }
 
