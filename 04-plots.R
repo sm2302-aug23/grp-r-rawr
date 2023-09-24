@@ -18,4 +18,4 @@ ggplot(collatz_df, aes(x = start, y = sapply(seq, max))) +
 ggplot(collatz_df, aes(x = as.factor(start %% 2 == 0), y = lengths(seq))) +
   geom_boxplot() +
   labs(x = "Starting Integer (Even/Odd)", y = "Length of Sequence") +
-  ggtitle("Boxplot pf Sequence Lengths by Even/Odd Starting Integers")
+  ggtitle("Boxplot of Sequence Lengths by Even/Odd Starting Integers")
