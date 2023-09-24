@@ -41,8 +41,7 @@ saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
 even_odd_sd_len <- collatz_df %>%
   group_by(parity) %>%
-  summarize(sd_len = sd(as.numeric(seq_length), na.rm = TRUE)) %>%
-  as.vector()
+  summarize(sd_len = sd(as.numeric(seq_length), na.rm = TRUE))
 
 expected_sd_len <- c(45.10308, 47.18387)
 expect_equal(even_odd_sd_len$sd_len, expected_sd_len, tolerance = 1e-6)
