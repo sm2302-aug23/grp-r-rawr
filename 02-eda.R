@@ -1,4 +1,6 @@
 library(tidyverse)
+install.packages("testthat")
+library(testthat)
 
 #1. Find the top 10 starting integers that produce the longest sequences [top10longest]
 collatz_df <- collatz_df %>%
@@ -30,14 +32,11 @@ even_odd_avg_len <- collatz_df %>%
   summarize(even_avg_len = mean(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
 
-str(even_odd_avg_len)
+expected_avg_len <- c(1.160139, 1)
 
-#  parity even_avg_len
-#1   Even      79.5936
-#2    Odd      92.3396
- 
-even_avg_len <- c(79.5936)
-odd_avg_len <- c(92.3396)
+if (all(abs(even_odd_avg_len$even_avg_len - expected_avg_len) < 1e-6)) {
+  print("Ratios of even_avg_len to odd_avg_len do not match the expected values.")
+}
 
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
@@ -46,14 +45,11 @@ even_odd_sd_len <- collatz_df %>%
   summarize(even_sd_len = sd(as.numeric(seq_length), na.rm = TRUE)) %>%
   as.data.frame() 
 
-str(even_odd_sd_len)
+expected_sd_len <- c(1.046134, 1)
 
-#  parity even_sd_len
-#1   Even    45.10308
-#2    Odd    47.18387
-
-even_sd_len <- c(45.10308)
-odd_sd_len <- c(47.18387)
+if (all(abs(even_odd_sd_len$even_sd_len - expected_sd_len) < 1e-6)) {
+  print("Ratios of even_avg_len to odd_avg_len do not match the expected values.")
+}
 
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
 
