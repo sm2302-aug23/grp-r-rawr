@@ -28,12 +28,12 @@ saveRDS(max_val_int, file = "max_val_int.rds")
 
 # Add the 'even_odd' column to collatz_df during the data wrangling process
 collatz_df <- collatz_df %>%
-  mutate(even_odd = ifelse(start %% 2 == 0, "Even", "Odd"))
+  mutate(start_type = ifelse(start %% 2 == 0, "Even", "Odd"))
 
 # Code to calculate even_odd_avg_len
 # Now calculate average lengths for even and odd starting integers
 even_odd_avg_len <- collatz_df %>%
-  group_by(even_odd) %>%
+  group_by(start_type) %>%
   summarize(avg_len = mean(seq_length, na.rm = TRUE))
 
 # Expected values
@@ -52,7 +52,7 @@ saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
 # Code to calculate even_odd_sd_len
 even_odd_sd_len <- collatz_df %>%
-  group_by(even_odd) %>%
+  group_by(start_type) %>%
   summarize(sd_len = mean(seq_length, na.rm = TRUE))
 
 # Expected values
