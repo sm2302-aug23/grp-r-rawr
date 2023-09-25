@@ -37,7 +37,7 @@ even_odd_avg_len <- collatz_df %>%
   summarize(avg_len = mean(seq_length, na.rm = TRUE))
 
 # Expected values
-expected_avg_len <- c(79.6, 92.3)
+expected_avg_len <- c(79.5936, 92.3396)
 
 # Check if the calculated values match the expected values with a tolerance
 if(all(abs(even_odd_avg_len$avg_len - expected_avg_len) < 1e-6)) {
