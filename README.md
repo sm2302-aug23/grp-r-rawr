@@ -1,11 +1,16 @@
 Collatz Conjecture
 ================
 
-## GitHub Documents
+#### Contribution declaration
 
-This is an R Markdown format used for publishing markdown documents to
-GitHub. When you click the **Knit** button all R code chunks are run and
-a markdown file (.md) suitable for publishing to GitHub is generated.
+- Task 1: @amirabarizah
+- Task 2: @amirabarizah @mimihassan @ninazuhairi @hani-hive
+- Task 3: @amirabarizah
+- Task 4: @hani-hive
+- Task 5: @mimihassan
+- Task 6: @hani-hive
+- README: @mimihassan
+- RMarkdown: @mimihassan
 
 ## Including Code
 
@@ -13,10 +18,9 @@ You can include R code in the document as follows:
 
 ``` {r collatz_df}
 summary(collatz_df)
-
 ```
 
-     start                         
+ start                         
  Min.   :    1             
  1st Qu.: 2501             
  Median : 5000             
@@ -24,14 +28,12 @@ summary(collatz_df)
  3rd Qu.: 7500             
  Max.   :10000            
 
+## Task 4: Length Sequence of Even and Odd integers Boxplot
 
+![image](https://github.com/sm2302-aug23/grp-r-rawr/assets/141210568/b0a93f93-dffc-4f64-8d31-d65b891c5e7c)
 
-## Including Plots
+## Task 6: Sequence Length Heatmap
 
-You can also embed plots, for example:
-
-```{r, fig.cap="Sequence Length Heatmap", echo=FALSE}
-```
 ![](README_files/figure-gfm/seq-length-to-reach-1.png)<!-- -->
 
 Note that the `echo = FALSE` parameter was added to the code chunk to
