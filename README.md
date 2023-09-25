@@ -30,6 +30,8 @@ summary(collatz_df)
 
 You can also embed plots, for example:
 
+```{r, fig.cap="Sequence Length Heatmap", echo=FALSE}
+```
 ![](README_files/figure-gfm/seq-length-to-reach-1.png)<!-- -->
 
 Note that the `echo = FALSE` parameter was added to the code chunk to
