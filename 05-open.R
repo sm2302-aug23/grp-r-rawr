@@ -21,3 +21,5 @@ print(paste("The most frequent integer (excluding 1) is:", most_frequent_integer
 
 #[1] "The most frequent integer (excluding 1) is: 2"
 
+#When running the script, the code will identify the integer that appears most frequently in the combined Collatz sequences, excluding the integer 1.
+#For instance, our finding for the most frequent integer (excluding 1) is 2, this indicates that the integer 2 is the most commonly occuring value than any other integer in the combined sequences, excluding the number 1.
