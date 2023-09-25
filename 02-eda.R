@@ -26,46 +26,37 @@ saveRDS(max_val_int, file = "max_val_int.rds")
 
 #3. Average length and standard deviation of the sequence for even starting integers compared to odd ones
 
-# Add the 'even_odd' column to collatz_df during the data wrangling process
 collatz_df <- collatz_df %>%
   mutate(start_type = ifelse(start %% 2 == 0, "Even", "Odd"))
 
-# Code to calculate even_odd_avg_len
-# Now calculate average lengths for even and odd starting integers
 even_odd_avg_len <- collatz_df %>%
   group_by(start_type) %>%
-  summarize(avg_len = sd(seq_length, na.rm = TRUE))
+  summarize(avg_len = sd(seq_length, na.rm = TRUE)) %>%
+  as.vector()
 
-# Expected values
 expected_avg_len <- c(79.5936, 92.3396)
 
-# Check if the calculated values match the expected values with a tolerance
 if(all(abs(even_odd_avg_len$avg_len - expected_avg_len) < 1e-6)) {
   cat("even_odd_avg_len matches expected values.\n")
 } else {
   cat("even_odd_avg_len does not match expected values.\n")
 }
 
-# Save the result
 saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
-
-# Code to calculate even_odd_sd_len
 even_odd_sd_len <- collatz_df %>%
   group_by(start_type) %>%
-  summarize(sd_len = mean(seq_length, na.rm = TRUE))
+  summarize(sd_len = mean(seq_length, na.rm = TRUE)) %>%
+  as.vector()
 
-# Expected values
 expected_sd_len <- c(45.10308, 47.18387)
 
-# Check if the calculated values match the expected values with a tolerance
 if(all(abs(even_odd_sd_len$sd_len - expected_sd_len) > 1e-5)) {
   cat("even_odd_sd_len matches expected values.\n")
 } else {
   cat("even_odd_sd_len does not match expected values.\n")
 }
 
-# Save the result
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
 
 
