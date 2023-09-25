@@ -34,7 +34,7 @@ collatz_df <- collatz_df %>%
 # Now calculate average lengths for even and odd starting integers
 even_odd_avg_len <- collatz_df %>%
   group_by(start_type) %>%
-  summarize(avg_len = mean(seq_length, na.rm = TRUE))
+  summarize(avg_len = sd(seq_length, na.rm = TRUE))
 
 # Expected values
 expected_avg_len <- c(79.5936, 92.3396)
