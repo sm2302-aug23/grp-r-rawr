@@ -10,8 +10,8 @@ ggplot(collatz_df, aes(x = start, y = lengths(seq))) +
 
 #2. Create another scatterplot, but this time graph the highest value reached in the sequence on the vertical axis. Highlight the top 10 starting integers in a different color.
 ggplot(collatz_df, aes(x = start, y = sapply(seq, max))) +
-  geom_point(aes(color = start %in% top10longest$start)) +
-  labs(x = "Starting Integer", y = "Highest Value Reached") +
+  geom_point(aes(colour = start %in% top10longest$start)) +
+  labs(x = "Starting Integer", y = "Highest Value Reached", colour = "Integer") +
   ggtitle("Scatterplot of Highest Values Reached")
 
 #3. Create a boxplot comparing the distributions of sequence lengths for even and odd starting integers. Are there any noticeable differences?
