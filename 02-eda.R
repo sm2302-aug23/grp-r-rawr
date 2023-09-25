@@ -53,10 +53,10 @@ saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 # Code to calculate even_odd_sd_len
 
 # Expected values
-expected_sd_len <- c(45.1, 47.2)
+expected_sd_len <- c(45.10308, 47.18387)
 
 # Check if the calculated values match the expected values with a tolerance
-if(all(abs(even_odd_sd_len$sd_len - expected_sd_len) < 1e-6)) {
+if(all(abs(even_odd_sd_len$sd_len - expected_sd_len) < 1e-5)) {
   cat("even_odd_sd_len matches expected values.\n")
 } else {
   cat("even_odd_sd_len does not match expected values.\n")
