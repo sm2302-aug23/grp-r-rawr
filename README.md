@@ -1,4 +1,4 @@
-Untitled
+Collatz Conjecture
 ================
 
 ## GitHub Documents
@@ -12,7 +12,8 @@ a markdown file (.md) suitable for publishing to GitHub is generated.
 You can include R code in the document as follows:
 
 ``` r
-summary(cars)
+summary(collatz_df)
+
 ```
 
     ##      speed           dist       
