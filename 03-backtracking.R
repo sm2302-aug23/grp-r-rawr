@@ -8,8 +8,11 @@ backtracks_df <- collatz_df %>%
 #2: Find the mode backtrack
 mode_backtrack <- backtracks_df %>%
   mutate(backtrack_count = sapply(seq, function(x) sum(x > x[1]))) %>%
+  
+                              
+mode_backtrack <- mode_backtrack %>%                                  
   pivot_wider(names_from = start, values_from = backtracks_df$backtrack_count) %>%
-  summarise(mode_backtrack = as.numeric(names(sort(table(backtrack_count), decreasing = TRUE)[1])))
+  summarise(mode_backtrack = as.numeric(names(sort(table(backtrack_count), decreasing = TRUE)[1]))) %>%
   unlist()
 
 
