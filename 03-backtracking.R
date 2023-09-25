@@ -1,5 +1,6 @@
 library(tidyverse)
 
+
 #1: Filter for backtracking sequences
 backtracks_df <- collatz_df %>%
   filter(sapply(seq, function(x) any(x > x[1])))
@@ -7,6 +8,7 @@ backtracks_df <- collatz_df %>%
 #2: Find the mode backtrack
 mode_backtrack <- backtracks_df %>%
   mutate(backtrack_count = sapply(seq, function(x) sum(x > x[1]))) %>%
+  pivot_wider(names_from = start, values_from = backtrack_count) %>%
   summarise(mode_backtrack = as.numeric(names(sort(table(backtrack_count), decreasing = TRUE)[1])))
 
 mode_backtrack <- as.integer(mode_backtrack$mode_backtrack)
@@ -30,7 +32,6 @@ even_odd_backtrack <- backtracks_df %>%
 
 even_odd_backtrack$Even
 even_odd_backtrack$Odd
-
 
 
 
