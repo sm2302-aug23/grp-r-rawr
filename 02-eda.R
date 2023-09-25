@@ -25,12 +25,12 @@ max_val_int <- collatz_df %>%
 saveRDS(max_val_int, file = "max_val_int.rds")
 
 #3. Average length and standard deviation of the sequence for even starting integers compared to odd ones
-# Code to calculate even_odd_avg_len
 
 # Add the 'even_odd' column to collatz_df during the data wrangling process
 collatz_df <- collatz_df %>%
   mutate(even_odd = ifelse(start %% 2 == 0, "Even", "Odd"))
 
+# Code to calculate even_odd_avg_len
 # Now calculate average lengths for even and odd starting integers
 even_odd_avg_len <- collatz_df %>%
   group_by(even_odd) %>%
@@ -67,3 +67,11 @@ if(all(abs(even_odd_sd_len$sd_len - expected_sd_len) > 1e-5)) {
 
 # Save the result
 saveRDS(even_odd_sd_len, file = "even_odd_sd_len.rds")
+
+
+even_odd_stats_summary <- even_odd_stats %>%
+  group_by(start_type) %>%
+  summarize(avg_len = mean(seq_length), sd_len = sd(seq_length))
+
+even_odd_avg_len <- even_odd_stats_summary$avg_len
+even_odd_sd_len <- even_odd_stats_summary$sd_len
