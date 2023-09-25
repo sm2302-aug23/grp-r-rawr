@@ -24,8 +24,7 @@ df <- data.frame(Starting_Integer = start_integers, Sequence_Length = sequence_l
 # Create the heatmap
 ggplot(df, aes(x = Starting_Integer, y = Sequence_Length, fill = Sequence_Length)) +
   geom_tile() +
-  scale_fill_gradient(low = "white", high = "blue") +
-  labs(x = "Starting Integer", y = "Sequence Length to Reach 1") +
+  scale_fill_gradient(low = "green", high = "red") +
+  labs(x = "Starting Integer", y = "Sequence Length to Reach 1", fill = "Sequence Length") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
