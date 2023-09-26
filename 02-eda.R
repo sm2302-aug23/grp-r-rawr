@@ -1,6 +1,5 @@
 library(tidyverse)
 
-#1. Find the top 10 starting integers that produce the longest sequences [top10longest]
 collatz_df <- collatz_df %>%
   mutate(seq_length = sapply(seq, length))
 
@@ -12,7 +11,6 @@ top10longest <- collatz_df %>%
 
 saveRDS(top10longest, file = "top10longest.rds")
 
-#2. Find out which starting integer produces a sequence that reaches the highest maximum value [max_val_int]
 collatz_df <- collatz_df %>%
   mutate(max_val = sapply(seq, max))
 
@@ -24,16 +22,12 @@ max_val_int <- collatz_df %>%
 
 saveRDS(max_val_int, file = "max_val_int.rds")
 
-#3. Average length and standard deviation of the sequence for even starting integers compared to odd ones
-
 collatz_df <- collatz_df %>%
   mutate(start_type = ifelse(start %% 2 == 0, "Even", "Odd"))
 
 even_odd_avg_len <- collatz_df %>%
   group_by(start_type) %>%
-  summarize(avg_len = sd(seq_length, na.rm = TRUE)) %>%
-  as.vector()
-
+  summarize(avg_len = mean(seq_length, na.rm = TRUE))
 expected_avg_len <- c(79.5936, 92.3396)
 
 if(all(abs(even_odd_avg_len$avg_len - expected_avg_len) < 1e-6)) {
@@ -46,8 +40,7 @@ saveRDS(even_odd_avg_len, file = "even_odd_avg_len.rds")
 
 even_odd_sd_len <- collatz_df %>%
   group_by(start_type) %>%
-  summarize(sd_len = mean(seq_length, na.rm = TRUE)) %>%
-  as.vector()
+  summarize(sd_len = sd(seq_length, na.rm = TRUE))
 
 expected_sd_len <- c(45.10308, 47.18387)
 
