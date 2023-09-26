@@ -8,8 +8,10 @@ backtracks_df <- collatz_df %>%
 #2: Find the mode backtrack
 mode_backtrack <- backtracks_df %>%
   mutate(backtrack_count = sapply(seq, function(x) sum(x > x[1]))) %>%
-  summarise(mode_backtrack = as.numeric(names(sort(table(backtrack_count), decreasing = TRUE)[1]))) %>%
-  unlist()
+  group_by(start) %>%
+  summarise(mode_backtrack = as.numeric(names(sort(table(backtrack_count), decreasing = TRUE)[1])))
+  
+mode_backtrack <- unlist(mode_backtrack$mode_backtrack)
 
 #3: Calculate the maximum value reached after the first backtrack
 max_after_backtrack <- backtracks_df %>%
