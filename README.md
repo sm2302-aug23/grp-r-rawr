@@ -8,7 +8,7 @@ Collatz Conjecture
 
 - Task 1: @amirabarizah
 - Task 2: @amirabarizah @mimihassan @ninazuhairi @hani-hive
-- Task 3: @amirabarizah
+- Task 3: @amirabarizah @mimihassan @ninazuhairi
 - Task 4: @hani-hive
 - Task 5: @mimihassan
 - Task 6: @hani-hive
