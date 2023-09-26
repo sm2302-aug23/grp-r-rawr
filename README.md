@@ -59,7 +59,7 @@ Collatz Conjecture
 
 ## Task 4: iii) Length Sequence of Even and Odd integers Boxplot
 
-![image](https://github.com/sm2302-aug23/grp-r-rawr/assets/141210568/b0a93f93-dffc-4f64-8d31-d65b891c5e7c)
+![](README_files/figure-gfm/Rplot.png)<!-- -->
 
 ## Task 6: Sequence Length Heatmap
 
