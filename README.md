@@ -56,9 +56,6 @@ Collatz Conjecture
 | Even     | 79.5936 | 45.10308 |
 | Odd      | 92.3396      |   47.18387 |
 
-## Task 4: i) Sequence Length
-
-## Task 4: ii) Highest Value Reached
 
 ## Task 4: iii) Length Sequence of Even and Odd integers Boxplot
 
